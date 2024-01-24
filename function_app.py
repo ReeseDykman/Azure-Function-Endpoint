@@ -9,7 +9,7 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(os.environ["WEATHER_KEY"])
 
     country = req.params.get('country')
-    city = req.parmas.get("city")
+    city = req.params.get("city")
     if not country or not city:
         try:
             req_body = req.get_json()
