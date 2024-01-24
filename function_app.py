@@ -6,7 +6,7 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 @app.route(route="http_trigger1", auth_level=func.AuthLevel.ANONYMOUS)
 def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info({os.environ["WEATHER_KEY"]})
+    logging.info(os.environ["WEATHER_KEY"])
 
     country = req.params.get('country')
     city = req.parmas.get("city")
