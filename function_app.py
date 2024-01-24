@@ -1,5 +1,6 @@
 import azure.functions as func
 import logging
+from weather import Weather
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
@@ -18,7 +19,7 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
             city = req_body.get("city")
             country = req_body.get("country")
     if country and city:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
+        return Weather(city=city, country=country).weather
     else:
         return func.HttpResponse(
              "please provide a city or country as parameters or in the body",
