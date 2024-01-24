@@ -6,7 +6,7 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 @app.route(route="http_trigger1", auth_level=func.AuthLevel.ANONYMOUS)
 def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Trigger 1 Processing Request')
+    logging.info({os.environ["WEATHER_KEY"]})
 
     country = req.params.get('country')
     city = req.parmas.get("city")
@@ -23,6 +23,6 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
     else:
         return func.HttpResponse(
-             f"{os.environ['WEATHER_KEY']}",
+             "TRIGGERED",
              status_code=200
         )
