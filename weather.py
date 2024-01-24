@@ -10,5 +10,5 @@ class Weather:
     def _getWeather(self):
         URL = f"http://api.weatherstack.com/current?access_key={os.environ.get('WEATHER_KEY')}&query={self.city},{self.country}"
         response = requests.get(URL)
-        data = json.loads(response)
+        data = json.loads(response.text)
         return data
